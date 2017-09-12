@@ -13,6 +13,6 @@
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
     "test:integration": "polymer build # test that psk builds without error with the CLI",
-    "watch": "browser-sync start --proxy localhost:8081 --files 'src/*.html, src/*.js, images/*' "
+    "watch": "browser-sync start --proxy localhost:8000 --files \"src/**/*.*, index.html, *.js\""
   }
 }

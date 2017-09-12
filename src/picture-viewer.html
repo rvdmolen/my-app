@@ -1,0 +1,20 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="picture-viewer">
+
+    <template>
+        <p>It works!</p>
+    </template>
+
+    <script>
+        class PictureViewer extends Polymer.Element {
+            static get is() {return 'picture-viewer';}
+            constructor() {
+                super();
+            }
+        }
+
+        window.customElements.define(PictureViewer.is, PictureViewer);
+    </script>
+
+</dom-module>

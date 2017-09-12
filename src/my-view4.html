@@ -1,20 +1,33 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="picture-viewer.html">
 
 <dom-module id="my-view4">
     <template>
-        <h1>Hello</h1>
+        <style include="shared-styles">
+            :host {
+                display: block;
+                padding: 10px;
+            }
+        </style>
+        <div class="card">
+            <div class="circle">4</div>
+            <h1>Picture viewer </h1>
+            <picture-viewer></picture-viewer>
+        </div>
     </template>
     <script>
         class MyView4 extends Polymer.Element {
+
             constructor() {
                 super();
-                console.log('my view 4 loaded');
             }
 
             static get is() {
                 return 'my-view4';
             }
         }
+
         window.customElements.define(MyView4.is, MyView4);
     </script>
 </dom-module>
