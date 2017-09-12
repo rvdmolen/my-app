@@ -8,11 +8,11 @@
     "eslint-plugin-html": "^2.0.0"
   },
   "scripts": {
-    "start": "polymer serve | npm run watch",
+    "start": "polymer serve --port 4200 | npm run watch",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
     "test:integration": "polymer build # test that psk builds without error with the CLI",
-    "watch": "browser-sync start --proxy localhost:8000 --files \"src/**/*.*, index.html, *.js\""
+    "watch": "browser-sync start --proxy localhost:4200 --files \"src/**/*.*, index.html, *.js\""
   }
 }
