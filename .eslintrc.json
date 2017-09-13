@@ -24,7 +24,8 @@
         ],
         "no-var": "off",
         "require-jsdoc": "off",
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "comma-dangle": "off"
     },
     "globals": {
         "Polymer": true

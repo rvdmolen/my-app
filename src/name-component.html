@@ -1,0 +1,33 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-input/iron-input.html">
+
+
+<dom-module id="name-component">
+    <template>
+        <p>Hello my name is {{firstname}} [[lastname]]</p>
+        <iron-input bind-value="{{firstname}}">
+            <input placeholder="Your name here...">
+        </iron-input>
+    </template>
+    <script>
+        class NameComponent extends Polymer.Element {
+            static get is() {return 'name-component';}
+            static get properties() {
+                return {
+                    firstname: {
+                        'type': String,
+                        'value': 'Richard'
+                    },
+                    lastname: {
+                        'type': String,
+                        'value': 'vd Molen'
+                    }
+                };
+            }
+            constructor() {
+                super();
+            }
+        }
+        window.customElements.define(NameComponent.is, NameComponent);
+    </script>
+</dom-module>

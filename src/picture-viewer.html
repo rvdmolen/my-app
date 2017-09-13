@@ -3,8 +3,17 @@
 <dom-module id="picture-viewer">
 
     <template>
-        <p>It works!</p>
+       <slot></slot>
     </template>
+
+    <style>
+        div {
+            display: inline-block;
+            background-color: #ccc;
+            border-radius: 8px;
+            padding: 4px;
+        }
+    </style>
 
     <script>
         class PictureViewer extends Polymer.Element {

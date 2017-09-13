@@ -1,0 +1,16 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="toggle-component">
+    <template>
+        <p>test</p>
+    </template>
+    <script>
+        class ToggleComponent extends Polymer.Element {
+            static get is() {return 'toggle-component';}
+            constructor() {
+                super();
+            }
+        }
+        window.customElements.define(ToggleComponent.is, ToggleComponent);
+    </script>
+</dom-module>
