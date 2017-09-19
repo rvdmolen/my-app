@@ -1,0 +1,36 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
+
+<dom-module id="employees-component">
+    <template>
+        <p>It works!</p>
+        <template is="dom-repeat" items="{{getEmployees()}}">
+            <div>{{item.name}}</div>
+            <div>{{item.adress}}</div>
+        </template>
+    </template>
+    <script>
+        class EmployeesComponent extends Polymer.Element {
+            getEmployees() {
+                return [
+                    {
+                        'name': 'Richard',
+                        'adress': 'Burgum'
+                    },
+                    {
+                        'name': 'Vera',
+                        'adress': 'Burgum'
+                    }
+                ];
+            }
+
+            static get is() {return 'employees-component';}
+
+            constructor() {
+                super();
+            }
+        }
+
+        window.customElements.define(EmployeesComponent.is, EmployeesComponent);
+    </script>
+</dom-module>
