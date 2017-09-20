@@ -1,8 +1,13 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+
 <link rel="import" href="toggle-component.html">
 <link rel="import" href="name-component.html">
 <link rel="import" href="employee-component.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="icon-toggle.html">
+
+
 
 <dom-module id="my-view5">
     <template>
@@ -10,14 +15,19 @@
             :host {
                 display: block;
                 padding: 10px;
+                --icon-toggle-color: lightgrey;
+                --icon-toggle-outline-color: black;
+                --icon-toggle-pressed-color: pink;
             }
         </style>
         <div class="card">
             <div class="circle">5</div>
             <h1>Toggle viewer </h1>
-            <toggle-component></toggle-component>
-            <name-component firstname="Koos" lastname="Konijn"></name-component>
-            <employees-component></employees-component>
+            <!--<toggle-component></toggle-component>-->
+            <icon-toggle toggle-icon="star"></icon-toggle>
+            <icon-toggle toggle-icon="star"></icon-toggle>
+            <!--<name-component firstname="Koos" lastname="Konijn"></name-component>-->
+            <!--<employees-component></employees-component>-->
         </div>
     </template>
     <script>
