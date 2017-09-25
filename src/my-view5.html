@@ -26,13 +26,28 @@
             <!--<toggle-component></toggle-component>-->
             <icon-toggle toggle-icon="star"></icon-toggle>
             <icon-toggle toggle-icon="star"></icon-toggle>
-            <!--<name-component firstname="Koos" lastname="Konijn"></name-component>-->
+            <br>
+            <name-component firstname="{{firstName}}" lastname="Konijn"></name-component>
+            <p>Hello my name is [[firstName]] [[lastName]]</p>
+
             <!--<employees-component></employees-component>-->
         </div>
     </template>
     <script>
         class MyView5 extends Polymer.Element {
             static get is() {return 'my-view5';}
+            static get properties() {
+                return {
+                    firstName: {
+                        type: 'string',
+                        value: 'Koos'
+                    },
+                    lastName: {
+                        type: 'string',
+                        value: 'Konijn'
+                    }
+                };
+            }
             constructor() {
                 super();
             }

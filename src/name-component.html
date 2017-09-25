@@ -4,9 +4,13 @@
 
 <dom-module id="name-component">
     <template>
-        <p>Hello my name is {{firstname}} [[lastname]]</p>
+        <!--<p>Hello my name is [[firstname]] [[lastname]]</p>-->
         <iron-input bind-value="{{firstname}}">
-            <input placeholder="Your name here...">
+            <input placeholder="Your firstname here...">
+        </iron-input>
+
+        <iron-input bind-value="{{lastname}}">
+            <input placeholder="Your lastname here...">
         </iron-input>
     </template>
     <script>
@@ -16,11 +20,11 @@
                 return {
                     firstname: {
                         'type': String,
-                        'value': 'Richard'
+                        'notify': true
                     },
                     lastname: {
                         'type': String,
-                        'value': 'vd Molen'
+                        'notify': true
                     }
                 };
             }
