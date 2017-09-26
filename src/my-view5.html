@@ -27,7 +27,7 @@
             <icon-toggle toggle-icon="star"></icon-toggle>
             <icon-toggle toggle-icon="star"></icon-toggle>
             <br>
-            <name-component firstname="{{firstName}}" lastname="Konijn"></name-component>
+            <name-component firstname="{{firstName}}" lastname="{{lastName}}"></name-component>
             <p>Hello my name is [[firstName]] [[lastName]]</p>
 
             <!--<employees-component></employees-component>-->
@@ -40,7 +40,8 @@
                 return {
                     firstName: {
                         type: 'string',
-                        value: 'Koos'
+                        value: 'Koos',
+                        observer: 'firstNameChanged'
                     },
                     lastName: {
                         type: 'string',
@@ -48,9 +49,24 @@
                     }
                 };
             }
+            static get observers() {
+                return [
+                    'nameChanged(firstName, lastName)'
+                ];
+            }
+
             constructor() {
                 super();
             }
+
+            firstNameChanged($newValue, $oldValue) {
+                // console.log(`firstname has changed in myview5 from ${$oldValue} to ${$newValue}`);
+            }
+
+            nameChanged(firstName, lastName) {
+                console.log(`name has changed in myview5 ${firstName} ${lastName}`);
+            }
+
         }
         window.customElements.define(MyView5.is, MyView5);
     </script>

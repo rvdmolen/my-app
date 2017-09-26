@@ -1,10 +1,11 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-input/iron-input.html">
 
+<script src="../bower_components/rxjs/dist/rx.lite.js"></script>
+<script src="greeter.js" type="module"></script>
 
 <dom-module id="name-component">
     <template>
-        <!--<p>Hello my name is [[firstname]] [[lastname]]</p>-->
         <iron-input bind-value="{{firstname}}">
             <input placeholder="Your firstname here...">
         </iron-input>
@@ -14,6 +15,12 @@
         </iron-input>
     </template>
     <script>
+//        import {Greeter} from './greeter.js';
+
+        export class test {
+
+        }
+
         class NameComponent extends Polymer.Element {
             static get is() {return 'name-component';}
             static get properties() {
@@ -24,12 +31,28 @@
                     },
                     lastname: {
                         'type': String,
-                        'notify': true
+                        'notify': true,
+                        'observer': 'lastNameChanged'
                     }
                 };
             }
+            lastNameChanged($newValue, $oldValue) {
+                console.log(`lastname has changed in namecomponent from ${$oldValue} to ${$newValue}`);
+            }
             constructor() {
                 super();
+
+
+                let test = Rx.Observable.from([1, 2, 3, 4, 5]);
+                test.subscribe((val) => {
+                    console.log((val));
+                });
+              //  let greet = new Greeter();
+              //  console.log(greet.sayHello());
+            }
+
+            test() {
+                return 'test string';
             }
         }
         window.customElements.define(NameComponent.is, NameComponent);

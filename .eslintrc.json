@@ -4,7 +4,8 @@
         "google"
     ],
     "parserOptions": {
-        "ecmaVersion": 6
+        "ecmaVersion": 6,
+        "sourceType": "module"
     },
     "env": {
         "browser": true
@@ -23,9 +24,14 @@
             }
         ],
         "no-var": "off",
+        "no-console": "off",
+        "no-undef": "off",
         "require-jsdoc": "off",
         "linebreak-style": 0,
-        "comma-dangle": "off"
+        "comma-dangle": "off",
+        "max-len" : "off",
+        "no-trailing-spaces" : "off",
+        "no-multiple-empty-lines" : "off"
     },
     "globals": {
         "Polymer": true
