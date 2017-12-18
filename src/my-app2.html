@@ -1,0 +1,224 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<!--<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">-->
+
+<!--<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">-->
+
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+
+<link rel="import" href="my-icons.html">
+
+<link rel="lazy-import" href="my-view1.html">
+<link rel="lazy-import" href="my-view2.html">
+<link rel="lazy-import" href="my-view3.html">
+<link rel="lazy-import" href="my-view404.html">
+
+<!--<link rel="import" href="sample-content.html">-->
+
+<dom-module id="my-app2">
+    <template>
+        <style>
+
+
+            #startDrawer {
+                --app-drawer-content-container: {
+                    box-shadow: 1px 0 2px 1px rgba(0, 0, 0, 0.18);
+                }
+            }
+
+            #endDrawer {
+                --app-drawer-content-container: {
+                    box-shadow: -1px 0 2px 1px rgba(0, 0, 0, 0.18);
+                }
+            }
+
+            app-header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: #4285f4;
+                color: #fff;
+                box-shadow: inset 0px 5px 2px -3px rgba(0, 0, 0, 0.2);
+
+            }
+
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: white;
+            }
+
+            sample-content {
+                padding-top: 192px;
+            }
+
+            [main-title] {
+                font-weight: lighter;
+                margin-left: 108px;
+            }
+
+            [condensed-title] {
+                font-weight: lighter;
+                margin-left: 30px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            [condensed-title] i {
+                font-weight: 100;
+                font-style: normal;
+            }
+
+            @media (max-width: 639px) {
+                [main-title] {
+                    margin-left: 50px;
+                    font-size: 30px;
+                }
+
+                [condensed-title] {
+                    font-size: 15px;
+                }
+            }
+        </style>
+
+        <app-location
+                route="{{route}}"
+                url-space-regex="^[[rootPath]]">
+        </app-location>
+
+        <app-route
+                route="{{route}}"
+                pattern="[[rootPath]]:page"
+                data="{{routeData}}"
+                tail="{{subroute}}">
+        </app-route>
+
+
+        <app-header fixed condenses reveals effects="waterfall resize-title blend-background parallax-background">
+            <app-toolbar>
+                <paper-icon-button icon="menu" onclick="startDrawer.toggle()"></paper-icon-button>
+                <h4 condensed-title>What is material? &mdash; Environment</h4>
+                <paper-icon-button icon="search"></paper-icon-button>
+            </app-toolbar>
+            <app-toolbar class="tall">
+                <h1 main-title>What is material?</h1>
+            </app-toolbar>
+        </app-header>
+
+        <app-drawer id="startDrawer" align="start"></app-drawer>
+        <app-drawer id="endDrawer" align="end"></app-drawer>
+
+        <sample-content size="100"></sample-content>
+
+        <!--<app-drawer-layout fullbleed narrow="{{narrow}}">-->
+        <!--&lt;!&ndash; Drawer content &ndash;&gt;-->
+        <!--<app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">-->
+        <!--<app-toolbar>Menu</app-toolbar>-->
+        <!--<iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">-->
+        <!--<a name="view1" href="[[rootPath]]view1">View One</a>-->
+        <!--<a name="view2" href="[[rootPath]]view2">View Two</a>-->
+        <!--<a name="view3" href="[[rootPath]]view3">View Three</a>-->
+        <!--</iron-selector>-->
+        <!--</app-drawer>-->
+
+        <!--&lt;!&ndash; Main content &ndash;&gt;-->
+        <!--<app-header-layout has-scrolling-region>-->
+
+        <!--<app-header slot="header" condenses reveals effects="waterfall">-->
+        <!--<app-toolbar>-->
+        <!--<paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>-->
+        <!--<div main-title>My App</div>-->
+        <!--</app-toolbar>-->
+        <!--</app-header>-->
+
+        <!--<iron-pages-->
+        <!--selected="[[page]]"-->
+        <!--attr-for-selected="name"-->
+        <!--fallback-selection="view404"-->
+        <!--role="main">-->
+        <!--<my-view1 name="view1"></my-view1>-->
+        <!--<my-view2 name="view2"></my-view2>-->
+        <!--<my-view3 name="view3"></my-view3>-->
+        <!--<my-view404 name="view404"></my-view404>-->
+        <!--</iron-pages>-->
+        <!--</app-header-layout>-->
+        <!--</app-drawer-layout>-->
+    </template>
+
+    <script>
+        class MyApp2 extends Polymer.Element {
+            static get is() {
+                return 'my-app2';
+            }
+
+            static get properties() {
+                return {
+                    page: {
+                        type: String,
+                        reflectToAttribute: true,
+                        observer: '_pageChanged',
+                    },
+                    routeData: Object,
+                    subroute: String,
+                    // This shouldn't be neccessary, but the Analyzer isn't picking up
+                    // Polymer.Element#rootPath
+                    rootPath: String,
+                };
+            }
+
+            static get observers() {
+                return [
+                    '_routePageChanged(routeData.page)',
+                ];
+            }
+
+            _routePageChanged(page) {
+                // If no page was found in the route data, page will be an empty string.
+                // Default to 'view1' in that case.
+                this.page = page || 'view1';
+
+                // Close a non-persistent drawer when the page & route are changed.
+//        if (!this.$.drawer.persistent) {
+//          this.$.drawer.close();
+//        }
+            }
+
+            _pageChanged(page) {
+                // Load page import on demand. Show 404 page if fails
+                var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+                Polymer.importHref(
+                    resolvedPageUrl,
+                    null,
+                    this._showPage404.bind(this),
+                    true);
+            }
+
+            _showPage404() {
+                this.page = 'view404';
+            }
+        }
+
+        window.customElements.define(MyApp2.is, MyApp2);
+    </script>
+</dom-module>

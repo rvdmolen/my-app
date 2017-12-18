@@ -25,13 +25,15 @@
         ],
         "no-var": "off",
         "no-console": "off",
+        "arrow-parens":"off",
         "no-undef": "off",
         "require-jsdoc": "off",
         "linebreak-style": 0,
         "comma-dangle": "off",
         "max-len" : "off",
         "no-trailing-spaces" : "off",
-        "no-multiple-empty-lines" : "off"
+        "no-multiple-empty-lines" : "off",
+        "no-unused-vars": "off"
     },
     "globals": {
         "Polymer": true

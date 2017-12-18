@@ -2,6 +2,7 @@
   "name": "polymer-starter-kit",
   "license": "BSD-3-Clause",
   "devDependencies": {
+    "@reactivex/rxjs": "^5.0.0",
     "browser-sync": "^2.18.13",
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.0",
@@ -14,5 +15,6 @@
     "test": "polymer test",
     "test:integration": "polymer build # test that psk builds without error with the CLI",
     "watch": "browser-sync start --proxy localhost:4200 --files \"src/**/*.*, index.html, *.js\""
-  }
+  },
+  "dependencies": {}
 }

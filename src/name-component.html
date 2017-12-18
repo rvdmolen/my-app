@@ -1,8 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-input/iron-input.html">
 
-<script src="../bower_components/rxjs/dist/rx.lite.js"></script>
-<script src="greeter.js" type="module"></script>
+<script src="../node_modules/@reactivex/rxjs/dist/global/Rx.js"></script>
 
 <dom-module id="name-component">
     <template>
@@ -14,47 +13,9 @@
             <input placeholder="Your lastname here...">
         </iron-input>
     </template>
-    <script>
-//        import {Greeter} from './greeter.js';
-
-        export class test {
-
-        }
-
-        class NameComponent extends Polymer.Element {
-            static get is() {return 'name-component';}
-            static get properties() {
-                return {
-                    firstname: {
-                        'type': String,
-                        'notify': true
-                    },
-                    lastname: {
-                        'type': String,
-                        'notify': true,
-                        'observer': 'lastNameChanged'
-                    }
-                };
-            }
-            lastNameChanged($newValue, $oldValue) {
-                console.log(`lastname has changed in namecomponent from ${$oldValue} to ${$newValue}`);
-            }
-            constructor() {
-                super();
-
-
-                let test = Rx.Observable.from([1, 2, 3, 4, 5]);
-                test.subscribe((val) => {
-                    console.log((val));
-                });
-              //  let greet = new Greeter();
-              //  console.log(greet.sayHello());
-            }
-
-            test() {
-                return 'test string';
-            }
-        }
+    <script type="module">
+        import {NameComponent} from './name-component.js';
+        // import * as Rx from '../node_modules/rxjs/bundles/Rx.min.js';
         window.customElements.define(NameComponent.is, NameComponent);
     </script>
 </dom-module>

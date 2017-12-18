@@ -1,0 +1,119 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-item/paper-item-body.html">
+
+<script src="../node_modules/@reactivex/rxjs/dist/global/Rx.js"></script>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+
+<dom-module id="search-component">
+    <template>
+        <p>Search component works</p>
+        <paper-input type="text"
+                     id="searchInput"
+                     value="{{searchTerm::input}}"
+                     label="[[inputPlaceholder]]"
+                     autofocus>
+        </paper-input>
+
+
+        <iron-collapse id="collapse">
+            <div class="collapse-content">
+                <template id="resultList" is="dom-repeat" items="{{searchResults}}">
+                    <paper-item raised>
+                        <paper-item-body two-line>
+                            <div>Show your status</div>
+                            <div secondary>{{item}}</div>
+                        </paper-item-body>
+                        <iron-icon icon="warning"></iron-icon>
+                        <button class="paper-item" role="option" on-tap="_chooseItem">test</button>
+                    </paper-item>
+                </template>
+            </div>
+        </iron-collapse>
+
+
+
+
+    </template>
+    <script>
+        class SearchComponent extends Polymer.Element {
+            constructor() {
+                super();
+            }
+
+            static get is() {
+                return 'search-component';
+            }
+
+            static get properties() {
+                return {
+                    inputPlaceholder: {
+                        type: String,
+                        value: 'Vul hier een waarde in...'
+                    },
+                    searchResults: {
+                        type: Array,
+                        value: [],
+                        observer: '_resultsChanged'
+                    },
+                    timeout: {
+                        type: Number,
+                        value: 500
+                    },
+                    minLength: {
+                        type: Number,
+                        value: 2
+                    },
+                    getRemoteSuggestions: {
+                        type: Object
+                    }
+                };
+            }
+
+            _chooseItem(event, sender) {
+                console.log(event);
+                console.log(sender);
+                const clickedButtonValue = event.path[1].value;
+                this.set('searchTerm', clickedButtonValue);
+                this.$.collapse.toggle();
+            }
+
+
+            _resultsChanged(results) {
+                const collapse = this.$.collapse;
+                if (results.length > 0 && !collapse.opened) {
+                    this.$.resultList.render();
+                    collapse.toggle();
+                } else if (results.length === 0 && collapse.opened) {
+                    collapse.toggle();
+                }
+            }
+
+             searchWikipedia(term) {
+                return $.ajax({
+                    url: 'http://en.wikipedia.org/w/api.php',
+                    dataType: 'jsonp',
+                    data: {
+                        action: 'opensearch',
+                        format: 'json',
+                        search: term
+                    }
+                }).promise();
+            }
+
+            ready() {
+                super.ready();
+                Rx.Observable.fromEvent(this.$.searchInput, 'keyup')
+                    .map(event => event.target.value)
+                    .filter(inputtext => inputtext.length > this.minLength)
+                    .debounceTime(this.timeout)
+                    .distinctUntilChanged()
+                    .switchMap(inputtext => this.searchWikipedia(inputtext))
+                    .subscribe(val => this.searchResults = val);
+            }
+        }
+        window.customElements.define(SearchComponent.is, SearchComponent);
+    </script>
+</dom-module>
