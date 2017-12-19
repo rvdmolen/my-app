@@ -22,10 +22,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/neon-animation/neon-animatable.html">
 <link rel="import" href="my-icons.html">
 
-<link rel="lazy-import" href="my-view1.html">
-<link rel="lazy-import" href="my-view2.html">
-<link rel="lazy-import" href="my-view3.html">
-<link rel="lazy-import" href="my-view404.html">
+<!--<link rel="lazy-import" href="my-view1.html">-->
+<link rel="import" href="my-view2.html">
+<link rel="import" href="my-view3.html">
+<link rel="import" href="my-view404.html">
+<link rel="import" href="./components/detail-item.component.html">
 
 
 
@@ -88,7 +89,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     attr-for-selected="name"
                     fallback-selection="view404"
                     role="main">
-                <my-view1 name="view1"></my-view1>
+                <detail-item name="view1"></detail-item>
                 <my-view2 name="view2"></my-view2>
                 <my-view3 name="view3"></my-view3>
                 <my-view404 name="view404"></my-view404>
@@ -108,8 +109,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 return {
                     page: {
                         type: String,
-                        reflectToAttribute: true,
-                        observer: '_pageChanged',
+                        reflectToAttribute: true
+                        //observer: '_pageChanged',
                     },
                     routeData: Object,
                     subroute: String,
@@ -132,15 +133,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //                this.page = page || 'view1';
 //            }
 
-            _pageChanged(page) {
-                // Load page import on demand. Show 404 page if fails
-                var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
-                Polymer.importHref(
-                    resolvedPageUrl,
-                    null,
-                    this._showPage404.bind(this),
-                    true);
-            }
+//            _pageChanged(page) {
+//                // Load page import on demand. Show 404 page if fails
+//                var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+//                Polymer.importHref(
+//                    resolvedPageUrl,
+//                    null,
+//                    this._showPage404.bind(this),
+//                    true);
+//            }
 
             _routePageChanged(page) {
                 if (!page || page == 'components') { // This code is added for demo purposes
