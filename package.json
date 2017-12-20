@@ -1,20 +1,27 @@
 {
-  "name": "polymer-starter-kit",
-  "license": "BSD-3-Clause",
-  "devDependencies": {
-    "@reactivex/rxjs": "^5.0.0",
-    "browser-sync": "^2.18.13",
-    "eslint": "^3.19.0",
-    "eslint-config-google": "^0.7.0",
-    "eslint-plugin-html": "^2.0.0"
-  },
-  "scripts": {
-    "start": "polymer serve --port 4200 | npm run watch",
-    "lint": "npm run lint:javascript && polymer lint",
-    "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
-    "test": "polymer test",
-    "test:integration": "polymer build # test that psk builds without error with the CLI",
-    "watch": "browser-sync start --proxy localhost:4200 --files \"src/**/*.*, index.html, *.js\""
-  },
-  "dependencies": {}
+    "name": "MyPolymerDemoAPP",
+    "version": "0.0.0",
+    "author": "Richard vd Molen",
+    "license": "MIT",
+    "repository": "",
+    "devDependencies": {
+        "@reactivex/rxjs": "^5.0.0",
+        "browser-sync": "^2.18.13",
+        "eslint": "^3.19.0",
+        "eslint-config-google": "^0.7.0",
+        "eslint-plugin-html": "^2.0.0"
+    },
+    "scripts": {
+        "start": "polymer serve --port 4200 | npm run watch",
+        "lint": "npm run lint:javascript && polymer lint",
+        "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
+        "test": "polymer test",
+        "test:integration": "polymer build # test that psk builds without error with the CLI",
+        "watch": "browser-sync start --proxy localhost:4200 --files \"src/**/*.*, index.html, *.js\"",
+        "mock_server": "node ./server/server.js"
+    },
+    "dependencies": {
+        "express": "4.13.4",
+        "ws": "1.1.0"
+    }
 }
