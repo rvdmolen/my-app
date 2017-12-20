@@ -15,14 +15,7 @@
     ],
     "rules": {
         "brace-style": "off",
-        "new-cap": [
-            "error",
-            {
-                "capIsNewExceptions": [
-                    "Polymer"
-                ]
-            }
-        ],
+        "new-cap": "off",
         "no-var": "off",
         "no-console": "off",
         "arrow-parens":"off",
