@@ -1,0 +1,85 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../pipes/pipe.html">
+
+<dom-module id="picture-detail">
+    <template>
+        <style>
+            :host {
+                display: flex;
+            }
+
+            .item {
+                /*flex-grow: 1;*/
+
+                flex-basis: 200px;
+                max-width: 300px;
+                /*min-width: 200px;*/
+                margin: 5px;
+            }
+
+            img {
+                border: none;
+                max-width: 100%;
+                height: auto;
+                display: block;
+                background: #ccc;
+                transition: transform .2s ease-in-out;
+            }
+
+            h2 {
+
+                margin-left: 10px;
+                margin-top: 10px;
+                margin-bottom: 0px;
+            }
+
+            .item2 {
+                flex-grow: 1;
+                flex-basis: 300px;
+                min-width: 300px;
+                min-height: 300px;
+
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+
+                text-decoration: none;
+                color: black;
+
+                color: #757575;
+                border-radius: 5px;
+                background-color: #fff;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+            }
+
+            .item3 {
+                background-color: #fff;
+            }
+
+            @media screen and (min-width: 50em) {
+                a {
+                    width: calc(25% - 6px);
+            }
+            }
+        </style>
+
+        <div class="item2">
+
+
+
+
+            <div style="background-color: #7cb342">
+                <h2>View</h2>
+            </div>
+
+            <div class="item3">
+                <span>[[item.title]]</span>
+            </div>
+
+            <!--<p>[[item.media.m]]</p>-->
+        </div>
+
+    </template>
+
+    <script src="picture-detail.component.js"></script>
+</dom-module>

@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../services/websocket.service.html">
+<link rel="import" href="picture-detail.component.html">
+<link rel="import" href="../pipes/json.pipe.html">
+
+<dom-module id="picture-list">
+    <template>
+        <style>
+
+
+            .container {
+
+
+                display: flex;
+                flex-wrap: wrap;
+                align-content: flex-start;
+                justify-content: space-between;
+                height: 10vh;
+            }
+        </style>
+
+        <websocket-service
+                id="getData"
+                protocols="[echo-protocol]"
+                url="ws://localhost:3100">
+        </websocket-service>
+
+        <div class="container">
+            <template is="dom-repeat" items="[[items]]">
+                <picture-detail item="[[item]]"></picture-detail>
+            </template>
+        </div>
+
+    </template>
+
+    <script src="picture-list.component.js"></script>
+
+</dom-module>

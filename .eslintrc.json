@@ -26,7 +26,8 @@
         "max-len" : "off",
         "no-trailing-spaces" : "off",
         "no-multiple-empty-lines" : "off",
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "padded-blocks": "off"
     },
     "globals": {
         "Polymer": true

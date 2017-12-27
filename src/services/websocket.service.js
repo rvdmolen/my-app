@@ -14,39 +14,29 @@ class WebSocketComponent extends Polymer.Element {
             url: {
                 type: String
             },
-            protocols: {
-                type: Array,
-                value: () => []
-            }
+            // protocols: {
+            //     type: Array,
+            //     value: () => []
+            // }
         };
     }
 
     openConnection() {
-        this.socket = new WebSocket(this.url, this.protocols);
+        this.socket = new WebSocket(this.url, this.protocol);
         this.socket.onerror = this.onError.bind(this);
         this.socket.onopen = this.onOpen.bind(this);
         this.socket.onmessage = this.onMessage.bind(this);
-        this.socket.onclose = this.onClose.bind(this);
     }
 
     onError(error) {
-        // this.fire('onerror', error);
-        this.dispatchEvent(new CustomEvent('onopen', {detail: error, bubbles: true, composed: true}));
+        this.dispatchEvent(new CustomEvent('on-error', {detail: error, bubbles: true, composed: true}));
     }
 
     onOpen(event) {
-       // this.fire('onopen');
-        //this.dispatchEvent(new CustomEvent('onopen', {bubbles: true, composed: true}));
-    }
-
-    onClose(event) {
-        var x;
+        this.dispatchEvent(new CustomEvent('on-open', {bubbles: true, composed: true}));
     }
 
     onMessage(event) {
-        console.log('onmessage', event);
-        // this.fire('onmessage', event.data);
-
        this.dispatchEvent(new CustomEvent('on-message', {detail: event.data, bubbles: true, composed: true}));
     }
 

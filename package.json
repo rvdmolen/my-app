@@ -12,7 +12,7 @@
         "eslint-plugin-html": "^2.0.0"
     },
     "scripts": {
-        "start": "npm run mock_server | polymer serve --port 4200 | npm run watch",
+        "start": "polymer serve --port 4200 | npm run watch",
         "lint": "npm run lint:javascript && polymer lint",
         "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
         "test": "polymer test",
