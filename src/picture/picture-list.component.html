@@ -3,20 +3,26 @@
 <link rel="import" href="picture-detail.component.html">
 <link rel="import" href="../pipes/json.pipe.html">
 
+
+
+
 <dom-module id="picture-list">
     <template>
+        <link rel="stylesheet" href="../../bower_components/material-design-lite/material.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="../../bower_components/material-design-lite/material.min.js"></script>
+
         <style>
 
-
-            .container {
-
-
-                display: flex;
-                flex-wrap: wrap;
-                align-content: flex-start;
-                justify-content: space-between;
-                height: 10vh;
+            .mdl-cell {
+                box-sizing: border-box;
+                background-color: #BDBDBD;
+                height: 200px;
+                /*padding-left: 8px;*/
+                /*padding-top: 4px;*/
+                color: white;
             }
+
         </style>
 
         <websocket-service
@@ -25,11 +31,26 @@
                 url="ws://localhost:3100">
         </websocket-service>
 
-        <div class="container">
+        <div class="mdl-grid">
             <template is="dom-repeat" items="[[items]]">
-                <picture-detail item="[[item]]"></picture-detail>
+                <div class="mdl-cell mdl-cell--4-col">
+                    <picture-detail item="[[item]]"></picture-detail>
+                </div>
+
             </template>
         </div>
+
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--4-col">4</div>
+            <div class="mdl-cell mdl-cell--4-col">4</div>
+            <div class="mdl-cell mdl-cell--4-col">4</div>
+        </div>
+
+        <!--<div class="mdl-grid">-->
+            <!--<div class="mdl-cell mdl-cell&#45;&#45;6-col">6</div>-->
+            <!--<div class="mdl-cell mdl-cell&#45;&#45;4-col">4</div>-->
+            <!--<div class="mdl-cell mdl-cell&#45;&#45;2-col">2</div>-->
+        <!--</div>-->
 
     </template>
 
